@@ -37,6 +37,9 @@ class Game extends Phaser.Scene {
       fill: '#ffffff'
     });
     this.tip.setOrigin(1, 0);
+
+    this.graphics = this.add.graphics();
+    this.graphics.lineStyle(3, 0xffffff);
   }
 
   update() {
@@ -98,9 +101,14 @@ class Game extends Phaser.Scene {
     if (cloud.x > config.width) cloud.x = 0;
   }
 
-  woodHoverState(i) { }
+  woodHoverState(i) {
+    this.graphics.clear();
+    this.graphics.strokeRect(this.woods[i].x - this.woods[i].width / 2, this.woods[i].y - this.woods[i].height / 2, this.woods[i].width, this.woods[i].height);
+  }
 
-  woodRestState(i) { }
+  woodRestState(i) {
+    this.graphics.clear();
+  }
 
   woodClick(i) {
     if (this.tempIndex == -1) {
