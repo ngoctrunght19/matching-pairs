@@ -16,6 +16,9 @@ class Boot extends Phaser.Scene {
     this.load.image("star", "assets/images/star.png");
     this.load.image("wonboard", "assets/images/wonboard.png");
     this.load.image("wood", "assets/images/wood.png");
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var question_id = urlParams.get('question_id');
   }
 
   create() {

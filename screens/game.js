@@ -16,8 +16,7 @@ class Game extends Phaser.Scene {
       stroke: '#000000',
       strokeThickness: 3,
       fill: '#ffffff'
-    });
-    this.ribbon_text.setOrigin(0.5);
+    }).setOrigin(0.5);
 
     this.initBoxes();
 
@@ -35,8 +34,7 @@ class Game extends Phaser.Scene {
       stroke: '#000000',
       strokeThickness: 3,
       fill: '#ffffff'
-    });
-    this.tip.setOrigin(1, 0);
+    }).setOrigin(1, 0);
 
     this.graphics = this.add.graphics();
     this.graphics.lineStyle(3, 0xffffff);
