@@ -1,6 +1,6 @@
 class Boot extends Phaser.Scene {
   constructor() {
-    super("bootGame");
+    super("BootGame");
   }
 
   preload() {
@@ -16,13 +16,22 @@ class Boot extends Phaser.Scene {
     this.load.image("star", "assets/images/star.png");
     this.load.image("wonboard", "assets/images/wonboard.png");
     this.load.image("wood", "assets/images/wood.png");
-
-    var urlParams = new URLSearchParams(window.location.search);
-    var question_id = urlParams.get('question_id');
+    this.load.on("progress", (percent) => {
+      // console.log(percent);
+    })
   }
 
   create() {
-    this.add.text(20, 20, "Loading game...");
-    this.scene.start("playGame");
+    var urlParams = new URLSearchParams(window.location.search);
+    var res = this.httpGet(`https://hoclieu.sachmem/api/annotator/search?${urlParams.toString()}`);
+    console.log(res);
+    this.scene.start("PlayGame");
+  }
+
+  httpGet(theUrl) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", theUrl, false);
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
   }
 }
